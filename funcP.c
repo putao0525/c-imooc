@@ -24,7 +24,7 @@ int main() {
 //    free(p);//此处用于释放内存
     int a = 20;
     int *pa = NULL;
-    pa = &a;
+    pa = &a; //pa执行的地址
     int **ppa = &pa;
     printf("------------\n");
     printf("pa指针指向地址: %#x\n", pa);
@@ -33,5 +33,23 @@ int main() {
     printf("ppa指针指向的地址: %#x\n", *ppa); //*ppa == p
     printf("ppa指针指向的地址在求值: %d\n", **ppa);
     printf("ppa指针指向的地址在求值: %#x\n", &ppa);
+    printf("------------\n");
+    printf("函数的地址: %#x\n", &initP);
+    void (*funcF)(int **pr, int count, int value) =&initP; //定义一个函数指针
+    printf("函数的地址: %#x\n", funcF);
+    printf("-------函数调用测试-------\n");
+
+    funcF(&pa, 10, 0); //函数的地址直接调用函数
+    PRINT_INT_ARRAY(pa, 10);
+    free(pa);
+
+    (*funcF)(&pa, 10, 0);
+    PRINT_INT_ARRAY(pa, 10);
+    free(pa);
+
+    (*initP)(&pa, 10, 0);
+    PRINT_INT_ARRAY(pa, 10);
+    free(pa);
+
     return 0;
 }
