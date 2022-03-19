@@ -51,5 +51,19 @@ int main() {
     PRINT_INT_ARRAY(pa, 10);
     free(pa);
 
+    printf("-------函数指针判断类型-------\n");
+    int *funcTest01(int a, int b); //这是一个函数 *的优先级低，返回值是一个指针
+    int (*funcTest02)(int, double); //这是一个函数指针
+    int *(*funcTest03)(int, double);//也是一个函数指针，返回值是int 类型的指针
+    printf("-------指针是否可以修改测试-------\n");
+    int ca = 20;
+    int cb = 30;
+    int const *cp01 = &ca; //倒着读 ，const修饰int
+    printf("常量的指针: %#x\n", *cp01);
+//    *cp = cb;//指针指向的值不可以修改
+    int *const cp02 = &ca;
+//    cp02=&cb;//指针的指向不可以修改
+    int const *const cp03 = &a;
+    
     return 0;
 }

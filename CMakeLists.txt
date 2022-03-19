@@ -7,6 +7,6 @@ include_directories(include) # 这个是用来配置工程的头文件搜索 ，
 file(GLOB files ${PROJECT_SOURCE_DIR}/*.c)
 foreach (file ${files})
     get_filename_component(name ${file} NAME)
-    add_executable(${name} ${file})
+    add_executable(${name} ${file} xx.c)
 endforeach ()
 
